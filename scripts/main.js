@@ -8,12 +8,12 @@ function main () {
     var {name} = d.properties;
 
     if (isFirstClick) {
-      // api call example
-      fetch('https://example.com?name=' + name, {
-        method: 'GET'
-      }).then(resp => {
+      // api call example!!!!
+      // fetch('https://example.com?name=' + name, {
+      //   method: 'GET'
+      // }).then(resp => {
         // console.log(resp)
-      })
+      // })
     }
   })
   .onMouseMove(function (d) {
