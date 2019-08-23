@@ -2,5 +2,56 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #2970ac;
+  background: rgba(255,225,32,1);
+	background: -moz-linear-gradient(top, rgba(255,225,32,1) 0%, rgba(255,34,0,1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,225,32,1)), color-stop(100%, rgba(255,34,0,1)));
+	background: -webkit-linear-gradient(top, rgba(255,225,32,1) 0%, rgba(255,34,0,1) 100%);
+	background: -o-linear-gradient(top, rgba(255,225,32,1) 0%, rgba(255,34,0,1) 100%);
+	background: -ms-linear-gradient(top, rgba(255,225,32,1) 0%, rgba(255,34,0,1) 100%);
+	background: linear-gradient(to bottom, rgba(255,225,32,1) 0%, rgba(255,34,0,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe120', endColorstr='#ff2200', GradientType=0 );*/	
+}
+
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+.feature {
+  fill: #000;
+  fill-opacity: 0.1;
+  stroke: #ffe320;
+  stroke-width: 1.5px;
+  cursor: pointer;
+}
+
+.feature.active {
+  fill: #ffe320;
+  fill-opacity: 1;
+  stroke: #ffe329;
+}
+
+.state {
+  fill-opacity: 0;
+}
+
+.map {
+  position: relative;
+}
+
+.hidden {
+  display: none;
+  fill: none;
+  stroke: none;
+}
+
+div.tooltip {
+  color: #ffe320; 
+  background: #ff2100; 
+  border-radius: 0; 
+  padding: 1em; 
+  position: absolute;
+  z-index: 99;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12pt;
 }
