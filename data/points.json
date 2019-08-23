@@ -1,0 +1,298 @@
+[
+  {
+    "region": "New York",
+    "latitude": 40.6643,
+    "longitude": -73.9385,
+    "weight": 11,
+    "animate": true,
+    "label": "custom text"
+  },
+  {
+    "region": "California",
+    "latitude": 34.0194,
+    "longitude": -118.4108,
+    "weight": 28,
+    "animate": true,
+    "label": "custom text"
+  },
+  {
+    "region": "Chicago",
+    "latitude": 41.8376,
+    "longitude": -87.6818,
+    "weight": 17,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Houston",
+    "latitude": 29.7805,
+    "longitude": -95.3863,
+    "weight": 15,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "San Francisco",
+    "latitude": 37.773972,
+    "longitude": -122.431297,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Philadelphia",
+    "latitude": 40.0094,
+    "longitude": -75.1333,
+    "weight": 13,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Trinidad and Tobago",
+    "latitude": 10.536421,
+    "longitude": -61.311951,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Toronto",
+    "latitude": 43.653908,
+    "longitude": -79.384293,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "United Kingdom",
+    "latitude": 51.509865,
+    "longitude": -0.118092,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Washington D.C.",
+    "latitude": 38.889931,
+    "longitude": -77.009003,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Atlanta",
+    "latitude": 33.753746,
+    "longitude": -84.38633,
+    "weight": 18,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Detroit",
+    "latitude": 42.331429,
+    "longitude": -83.045753,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Florida",
+    "latitude": 27.994402,
+    "longitude": -81.760254,
+    "weight": 18,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Boston",
+    "latitude": 42.361145,
+    "longitude": -71.057083,
+    "weight": 34,
+    "animate": true,
+    "label": "custom text"
+  },
+  {
+    "region": "Hong Kong",
+    "latitude": 22.286394,
+    "longitude": 114.149139,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Nairobi, Kenya",
+    "latitude": -1.362863,
+    "longitude": 36.834583,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Memphis",
+    "latitude": 35.040031,
+    "longitude": -89.981873,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Austin",
+    "latitude": 30.266926,
+    "longitude": -97.750519,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Miami",
+    "latitude": 25.761681,
+    "longitude": -80.191788,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Melbourne, Austrailia",
+    "latitude": -37.815018,
+    "longitude": 144.946014,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Oakland",
+    "latitude": 37.804363,
+    "longitude": -122.271111,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Las Vegas",
+    "latitude": 36.114647,
+    "longitude": -115.172813,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "New Orleans",
+    "latitude": 29.951065,
+    "longitude": -90.071533,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "New Jersey",
+    "latitude": 39.833851,
+    "longitude": -74.871826,
+    "weight": 19,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Virginia",
+    "latitude": 37.926868,
+    "longitude": -78.024902,
+    "weight": 19,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Colorado",
+    "latitude": 39.742043,
+    "longitude": -104.991531,
+    "weight": 28,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Baltimore",
+    "latitude": 39.299236,
+    "longitude": -76.609383,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Dominican Republic",
+    "latitude": 18.483402,
+    "longitude": -69.929611,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Puerto Rico",
+    "latitude": 18.200178,
+    "longitude": -66.664513,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Argentina",
+    "latitude": -34.603722,
+    "longitude": -58.381592,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Colombia",
+    "latitude": 4.624335,
+    "longitude": -74.063644,
+    "weight": 12,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Mexico",
+    "latitude": 19.432608,
+    "longitude": -99.133209,
+    "weight": 22,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Cuba",
+    "latitude": 23.113592,
+    "longitude": -82.366592,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Pittsburgh",
+    "latitude": 40.440624,
+    "longitude": -79.995888,
+    "weight": 10,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "Cincinnati",
+    "latitude": 39.103119,
+    "longitude": -84.512016,
+    "weight": 20,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "California",
+    "latitude": 38.575764,
+    "longitude": -121.478851,
+    "weight": 16,
+    "animate": false,
+    "label": "custom text"
+  },
+  {
+    "region": "California",
+    "latitude": 37.804363,
+    "longitude": -122.271111,
+    "weight": 13,
+    "animate": false,
+    "label": "custom text"
+  }
+]

@@ -5,8 +5,8 @@ function WorldMap(params) {
     container: 'document',
     width: window.innerWidth,
     height: window.innerHeight,
-    data: null,
-    geojson: null,
+    data: [],
+    geojson: {},
     center: [0, 50],
     scale: 300,
     rotated: 100,
@@ -15,7 +15,10 @@ function WorldMap(params) {
       bottom: 0,
       left: 0,
       right: 0
-    }
+    },
+    minRadius: 5,
+    maxRadius: 18,
+    pointColor: '#5E738B'
   }, params);
 
   // viz selection
@@ -33,13 +36,24 @@ function WorldMap(params) {
     projection,
     zoom,
     zoomIdentity = d3.zoomIdentity,
-    offsetL = viz.container.node().offsetLeft + 10;
-  offsetT = viz.container.node().offsetTop + 10;
+    offsetL = viz.container.node().offsetLeft + 10,
+    offsetT = viz.container.node().offsetTop + 10,
+    onMouseMove = function () {},
+    onMouseOut = function () {},
+    onClick = function () {};
 
   function main() {
     // calculated variables
     chartWidth = attrs.width - attrs.margin.left - attrs.margin.right;
     chartHeight = attrs.height - attrs.margin.top - attrs.margin.top;
+
+    // radius scale
+    var minWeight = d3.min(attrs.data, d => +d.weight);
+    var maxWeight = d3.max(attrs.data, d => +d.weight);
+
+    var radius = d3.scaleLinear()
+      .range([attrs.minRadius, attrs.maxRadius])
+      .domain([minWeight, maxWeight])
 
     projection = d3.geoMercator()
       .scale(attrs.scale)
@@ -103,12 +117,73 @@ function WorldMap(params) {
       .attr("d", path)
       .classed('feature', true)
 
-    d3.selectAll('.feature')
-      .on('click', clicked)
-      .on("mousemove", showTooltip)
+    viz.features = d3.selectAll('.feature')
+      .attr('data-name', d => d.properties.name)
+      .on('click', function (d) {
+        clicked(d, this)
+      })
+      .on("mousemove", function (d) {
+        showTooltip(d);
+        onMouseMove(d);
+      })
       .on("mouseout", function (d, i) {
         viz.tooltip.classed("hidden", true);
+        onMouseOut(d);
       })
+
+    // points
+    viz.animatedPoints = patternify({
+      tag: 'circle',
+      selector: 'animated-point',
+      data: attrs.data.filter(d => d.animate),
+      container: viz.chart
+    })
+    .attr("cx", function (d) { 
+      return projection([d.longitude, d.latitude])[0]; 
+    })
+    .attr("cy", function (d) { 
+      return projection([d.longitude, d.latitude])[1]; 
+    })
+    .attr("r", d => radius(+d.weight))
+    .attr("fill", '#000')
+    .attr('fill-opacity', 0.3)
+    .attr('stroke', attrs.pointColor)
+    .attr('stroke-width', 1)
+    .attr('pointer-events', 'none')
+      .append("animate")
+      .attr("attributeType", "SVG")
+      .attr("attributeName", "r")
+      .attr("begin","0s")
+      .attr("dur","2.5s")
+      .attr("repeatCount", "indefinite")
+      .attr("from", d => radius(+d.weight))
+      .attr("to", d => radius(+d.weight) * 2)
+
+    viz.points = patternify({
+      tag: 'circle',
+      selector: 'point',
+      data: attrs.data,
+      container: viz.chart
+    })
+    .attr("cx", function (d) { 
+      return projection([d.longitude, d.latitude])[0]; 
+    })
+    .attr("cy", function (d) { 
+      return projection([d.longitude, d.latitude])[1]; 
+    })
+    .attr('data-name', d => d.region)
+    .attr("r", d => radius(+d.weight))
+    .attr("fill", attrs.pointColor)
+    .attr("cursor", "pointer")
+    .on('click', function (d) {
+      var name = d.region;
+
+      var feature = viz.features.filter(x => x.properties.name == name);
+
+      if (!feature.empty()) {
+        clicked(feature.datum(), feature.node());
+      }
+    });
   }
 
   function reset() {
@@ -124,12 +199,17 @@ function WorldMap(params) {
       )
   }
 
-  function clicked(d) {
-    if (active.node() === this) return reset();
+  function clicked(d, that) {
+    if (active.node() === that) {
+      onClick(d, false);
+      return reset();
+    } else {
+      onClick(d, true);
+    }
 
     active.classed("active", false);
 
-    active = d3.select(this).classed("active", true);
+    active = d3.select(that).classed("active", true);
 
     var bounds = path.bounds(d),
       dx = bounds[1][0] - bounds[0][0],
@@ -163,6 +243,8 @@ function WorldMap(params) {
   function onZoom() {
     var transform = d3.event.transform;
     viz.chart.attr('transform', transform);
+
+    // d3.selectAll('.feature').style("stroke-width", 1.5 / transform.k + "px");
   }
 
   function handleWindowResize() {
@@ -201,6 +283,21 @@ function WorldMap(params) {
   main.render = function () {
     main();
     handleWindowResize();
+    return main;
+  }
+
+  main.onClick = function (f) {
+    onClick = f;
+    return main;
+  }
+
+  main.onMouseMove = function (f) {
+    onMouseMove = f;
+    return main;
+  }
+
+  main.onMouseOut = function (f) {
+    onMouseOut = f;
     return main;
   }
 

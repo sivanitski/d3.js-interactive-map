@@ -1,9 +1,9 @@
-- Must work across desktop and mobile touch - 2.5 hours
-- Panning side to side, and up to down on mobile and desktop to allow selection of countries outside current viewport (see: demo has bugs in this regard) - 1 hour using d3.zoom
-- Clicked region sends API GET/POST (deliverable provides simple example call) - 15 mins
-- Clicked region returns region name for outside page use (see: demo) - 15 mins
-- JSON object of points (lat, long) can be plotted with different weights, example: [ lat: 32.3223, long: -123.3283, weight: 10, animate: true, label: 'Custom Text', region: 'JP', if necessary, etc. ] - 1.5 hours
-- Weight is size of point
-- Some points can be static, some points can be animated (animate = true) i.e. pulsing (see: https://audiomack.world) - 1 h for animation
-- Label should display as tooltip like regions - we can reuse same tooltip as above
-- Clicking point is the same as clicking region and should trigger zoom in + info display, etc.
++ Must work across desktop and mobile touch - 2.5 hours
++ Panning side to side, and up to down on mobile and desktop to allow selection of countries outside current viewport (see: demo has bugs in this regard) - 1 hour using d3.zoom
++ Clicked region sends API GET/POST (deliverable provides simple example call) - 15 mins
++ Clicked region returns region name for outside page use (see: demo) - 15 mins
++ JSON object of points (lat, long) can be plotted with different weights, example: [ lat: 32.3223, long: -123.3283, weight: 10, animate: true, label: 'Custom Text', region: 'JP', if necessary, etc. ] - 1.5 hours
++ Weight is size of point
++ Some points can be static, some points can be animated (animate = true) i.e. pulsing (see: https://audiomack.world) - 1 h for animation
++ Label should display as tooltip like regions - we can reuse same tooltip as above
++ Clicking point is the same as clicking region and should trigger zoom in + info display, etc.
