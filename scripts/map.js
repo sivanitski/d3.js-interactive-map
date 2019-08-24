@@ -64,11 +64,11 @@ function WorldMap(params) {
       .projection(projection);
 
     zoom = d3.zoom()
-      .scaleExtent([0.7, 20])
-      .translateExtent([
-        [-chartWidth * 0.2, -chartHeight * 0.3], 
-        [chartWidth * 1.2, chartHeight * 1.5]
-      ])
+      // .scaleExtent([0.7, 20])
+      // .translateExtent([
+      //   [-chartWidth * 0.2, -chartHeight * 0.3], 
+      //   [chartWidth * 1.2, chartHeight * 1.5]
+      // ])
       .on("zoom", d => onZoom(d));
 
     viz.tooltip = patternify({
@@ -227,7 +227,7 @@ function WorldMap(params) {
       dy = bounds[1][1] - bounds[0][1],
       x = (bounds[0][0] + bounds[1][0]) / 2,
       y = (bounds[0][1] + bounds[1][1]) / 2,
-      scale = Math.max(0.81, Math.min(8, 0.9 / Math.max(dx / chartWidth, dy / chartHeight))),
+      scale = Math.max(0.18, Math.min(8, 0.9 / Math.max(dx / chartWidth, dy / chartHeight))),
       translate = [chartWidth / 2 - scale * x, chartHeight / 2 - scale * y];
 
     viz.svg.transition()
