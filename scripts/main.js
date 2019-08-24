@@ -1,8 +1,14 @@
 function main () {
   var container = document.getElementById('map');
 
+  var bound = container.getBoundingClientRect();
+  var width = bound.width;
+  var height = bound.height;
+
   var map = WorldMap({
-    container
+    container,
+    width,
+    height
   })
   .onClick(function (d, isFirstClick) {
     var {name} = d.properties;

@@ -65,10 +65,10 @@ function WorldMap(params) {
 
     zoom = d3.zoom()
       // .scaleExtent([0.7, 20])
-      // .translateExtent([
-      //   [-chartWidth * 0.2, -chartHeight * 0.3], 
-      //   [chartWidth * 1.2, chartHeight * 1.5]
-      // ])
+      .translateExtent([
+        [-900, -580], 
+        [chartWidth + 900, chartHeight + 500]
+      ])
       .on("zoom", d => onZoom(d));
 
     viz.tooltip = patternify({
