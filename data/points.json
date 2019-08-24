@@ -5,7 +5,8 @@
     "longitude": -73.9385,
     "weight": 11,
     "animate": true,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "California",
@@ -13,7 +14,8 @@
     "longitude": -118.4108,
     "weight": 28,
     "animate": true,
-    "label": "custom text"
+    "label": "Los Angeles",
+    "color": "#67ed32"
   },
   {
     "region": "Chicago",
@@ -21,7 +23,8 @@
     "longitude": -87.6818,
     "weight": 17,
     "animate": false,
-    "label": "custom text"
+    "label": "Chicago",
+    "color": "#5E738B"
   },
   {
     "region": "Houston",
@@ -29,7 +32,8 @@
     "longitude": -95.3863,
     "weight": 15,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#e64c4c"
   },
   {
     "region": "San Francisco",
@@ -37,7 +41,8 @@
     "longitude": -122.431297,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Philadelphia",
@@ -45,7 +50,8 @@
     "longitude": -75.1333,
     "weight": 13,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Trinidad and Tobago",
@@ -53,7 +59,8 @@
     "longitude": -61.311951,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Toronto",
@@ -61,7 +68,8 @@
     "longitude": -79.384293,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "United Kingdom",
@@ -69,7 +77,8 @@
     "longitude": -0.118092,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Washington D.C.",
@@ -77,7 +86,8 @@
     "longitude": -77.009003,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Atlanta",
@@ -85,7 +95,8 @@
     "longitude": -84.38633,
     "weight": 18,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Detroit",
@@ -93,7 +104,8 @@
     "longitude": -83.045753,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Florida",
@@ -101,7 +113,8 @@
     "longitude": -81.760254,
     "weight": 18,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Massachusetts",
@@ -109,7 +122,8 @@
     "longitude": -71.057083,
     "weight": 34,
     "animate": true,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#e64c4c"
   },
   {
     "region": "Hong Kong",
@@ -117,7 +131,8 @@
     "longitude": 114.149139,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Nairobi, Kenya",
@@ -125,7 +140,8 @@
     "longitude": 36.834583,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Memphis",
@@ -133,7 +149,8 @@
     "longitude": -89.981873,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Austin",
@@ -141,7 +158,8 @@
     "longitude": -97.750519,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Miami",
@@ -149,7 +167,8 @@
     "longitude": -80.191788,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Melbourne, Austrailia",
@@ -157,7 +176,8 @@
     "longitude": 144.946014,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Oakland",
@@ -165,7 +185,8 @@
     "longitude": -122.271111,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Las Vegas",
@@ -173,7 +194,8 @@
     "longitude": -115.172813,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "New Orleans",
@@ -181,7 +203,8 @@
     "longitude": -90.071533,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "New Jersey",
@@ -189,7 +212,8 @@
     "longitude": -74.871826,
     "weight": 19,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Virginia",
@@ -197,7 +221,8 @@
     "longitude": -78.024902,
     "weight": 19,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Colorado",
@@ -205,7 +230,8 @@
     "longitude": -104.991531,
     "weight": 28,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Baltimore",
@@ -213,7 +239,8 @@
     "longitude": -76.609383,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Dominican Republic",
@@ -221,7 +248,8 @@
     "longitude": -69.929611,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Puerto Rico",
@@ -229,7 +257,8 @@
     "longitude": -66.664513,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Argentina",
@@ -237,7 +266,8 @@
     "longitude": -58.381592,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Colombia",
@@ -245,7 +275,8 @@
     "longitude": -74.063644,
     "weight": 12,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Mexico",
@@ -253,7 +284,8 @@
     "longitude": -99.133209,
     "weight": 22,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Cuba",
@@ -261,7 +293,8 @@
     "longitude": -82.366592,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Pittsburgh",
@@ -269,7 +302,8 @@
     "longitude": -79.995888,
     "weight": 10,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "Cincinnati",
@@ -277,7 +311,8 @@
     "longitude": -84.512016,
     "weight": 20,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "California",
@@ -285,7 +320,8 @@
     "longitude": -121.478851,
     "weight": 16,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   },
   {
     "region": "California",
@@ -293,6 +329,7 @@
     "longitude": -122.271111,
     "weight": 13,
     "animate": false,
-    "label": "custom text"
+    "label": "custom text",
+    "color": "#5E738B"
   }
 ]

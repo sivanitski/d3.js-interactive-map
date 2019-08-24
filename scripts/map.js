@@ -17,8 +17,7 @@ function WorldMap(params) {
       right: 0
     },
     minRadius: 5,
-    maxRadius: 18,
-    pointColor: '#5E738B'
+    maxRadius: 13
   }, params);
 
   // viz selection
@@ -64,7 +63,13 @@ function WorldMap(params) {
     path = d3.geoPath()
       .projection(projection);
 
-    zoom = d3.zoom().on("zoom", d => onZoom(d));
+    zoom = d3.zoom()
+      .scaleExtent([0.7, 20])
+      .translateExtent([
+        [-chartWidth * 0.2, -chartHeight * 0.3], 
+        [chartWidth * 1.2, chartHeight * 1.5]
+      ])
+      .on("zoom", d => onZoom(d));
 
     viz.tooltip = patternify({
       tag: 'div',
@@ -147,14 +152,14 @@ function WorldMap(params) {
     .attr("r", d => radius(+d.weight))
     .attr("fill", '#000')
     .attr('fill-opacity', 0.3)
-    .attr('stroke', attrs.pointColor)
+    .attr('stroke', d => d.color)
     .attr('stroke-width', 1)
     .attr('pointer-events', 'none')
       .append("animate")
       .attr("attributeType", "SVG")
       .attr("attributeName", "r")
       .attr("begin","0s")
-      .attr("dur","2.5s")
+      .attr("dur","1.5s")
       .attr("repeatCount", "indefinite")
       .attr("from", d => radius(+d.weight))
       .attr("to", d => radius(+d.weight) * 2)
@@ -173,7 +178,7 @@ function WorldMap(params) {
     })
     .attr('data-name', d => d.region)
     .attr("r", d => radius(+d.weight))
-    .attr("fill", attrs.pointColor)
+    .attr("fill", d => d.color)
     .attr("cursor", "pointer")
     .on('click', function (d) {
       var name = d.region;
@@ -183,7 +188,13 @@ function WorldMap(params) {
       if (!feature.empty()) {
         clicked(feature.datum(), feature.node());
       }
-    });
+    })
+    .on('mousemove', function (d) {
+      showTooltip({properties: {name: d.label}});
+    })
+    .on('mouseout', function () {
+      viz.tooltip.classed("hidden", true);
+    })
   }
 
   function reset() {
@@ -216,7 +227,7 @@ function WorldMap(params) {
       dy = bounds[1][1] - bounds[0][1],
       x = (bounds[0][0] + bounds[1][0]) / 2,
       y = (bounds[0][1] + bounds[1][1]) / 2,
-      scale = Math.max(1, Math.min(8, 0.9 / Math.max(dx / chartWidth, dy / chartHeight))),
+      scale = Math.max(0.81, Math.min(8, 0.9 / Math.max(dx / chartWidth, dy / chartHeight))),
       translate = [chartWidth / 2 - scale * x, chartHeight / 2 - scale * y];
 
     viz.svg.transition()
@@ -242,9 +253,12 @@ function WorldMap(params) {
 
   function onZoom() {
     var transform = d3.event.transform;
-    viz.chart.attr('transform', transform);
+    
+    var tx = Math.max(transform.x, chartWidth - chartWidth * transform.k);
 
-    // d3.selectAll('.feature').style("stroke-width", 1.5 / transform.k + "px");
+    console.log(tx);
+
+    viz.chart.attr('transform', transform);
   }
 
   function handleWindowResize() {
