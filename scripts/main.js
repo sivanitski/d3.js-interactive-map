@@ -41,6 +41,7 @@ function main () {
       .render()
   })
 
+  // just for demo purposes
   window.worldMap = map;
 }
 
