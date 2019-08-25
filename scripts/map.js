@@ -16,6 +16,8 @@ function WorldMap(params) {
       left: 0,
       right: 0
     },
+    transitionDuration: 750,
+    pointBoundWidth: 50,
     minRadius: 5,
     maxRadius: 13
   }, params);
@@ -187,6 +189,8 @@ function WorldMap(params) {
 
       if (!feature.empty()) {
         clicked(feature.datum(), feature.node());
+      } else {
+        pointClick(Object.assign(d, {properties: {name}}), this);
       }
     })
     .on('mousemove', function (d) {
@@ -197,17 +201,21 @@ function WorldMap(params) {
     })
   }
 
+  function panTo(x, y, scale) {
+    viz.svg.transition()
+      .duration(attrs.transitionDuration)
+      .call(
+        zoom.transform,
+        zoomIdentity.translate(x, y).scale(scale)
+      )
+  }
+
   function reset() {
     active.classed("active", false);
     active = d3.select(null);
     viz.tooltip.classed("hidden", true);
 
-    viz.svg.transition()
-      .duration(750)
-      .call(
-        zoom.transform,
-        zoomIdentity.translate(0, 0).scale(1)
-      )
+    panTo(0, 0, 1);
   }
 
   function clicked(d, that) {
@@ -230,12 +238,37 @@ function WorldMap(params) {
       scale = Math.max(0.18, Math.min(8, 0.9 / Math.max(dx / chartWidth, dy / chartHeight))),
       translate = [chartWidth / 2 - scale * x, chartHeight / 2 - scale * y];
 
-    viz.svg.transition()
-      .duration(750)
-      .call(
-        zoom.transform,
-        zoomIdentity.translate(translate[0], translate[1]).scale(scale)
-      );
+    panTo(translate[0], translate[1], scale);
+
+    showTooltip(d);
+  }
+
+  function pointClick(d, that) {
+    if (active.node() === that) {
+      onClick(d, false);
+      return reset();
+    } else {
+      onClick(d, true);
+    }
+
+    active.classed("active", false);
+
+    active = d3.select(that).classed("active", true);
+
+    var point = projection([d.longitude, d.latitude]);
+
+    var bounds = [
+      [point[0] - attrs.pointBoundWidth / 2, point[1] - attrs.pointBoundWidth / 2],
+      [point[0] + attrs.pointBoundWidth / 2, point[1] + attrs.pointBoundWidth / 2]
+    ],
+    dx = bounds[1][0] - bounds[0][0],
+    dy = bounds[1][1] - bounds[0][1],
+    x = (bounds[0][0] + bounds[1][0]) / 2,
+    y = (bounds[0][1] + bounds[1][1]) / 2,
+    scale = Math.max(0.18, Math.min(8, 0.9 / Math.max(dx / chartWidth, dy / chartHeight))),
+    translate = [chartWidth / 2 - scale * x, chartHeight / 2 - scale * y];
+
+    panTo(translate[0], translate[1], scale);
 
     showTooltip(d);
   }
@@ -253,10 +286,6 @@ function WorldMap(params) {
 
   function onZoom() {
     var transform = d3.event.transform;
-    
-    var tx = Math.max(transform.x, chartWidth - chartWidth * transform.k);
-
-    console.log(tx);
 
     viz.chart.attr('transform', transform);
   }
@@ -281,6 +310,23 @@ function WorldMap(params) {
 
     if (containerRect.height > 0) {
       attrs.height = containerRect.height;
+    }
+  }
+
+  // programatically show tooltip
+  main.showTooltip = function (regionName) {
+    showTooltip({properties: {name: regionName}});
+  }
+
+  // pan and zoom in to specific point (x, y, scale)
+  main.panTo = panTo;
+
+  // programatically activate region and zoom in
+  main.activateRegion = function (regionName) {
+    var feature = viz.features.filter(x => x.properties.name == regionName);
+
+    if (!feature.empty()) {
+      clicked(feature.datum(), feature.node());
     }
   }
 
