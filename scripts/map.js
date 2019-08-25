@@ -19,7 +19,15 @@ function WorldMap(params) {
     transitionDuration: 750,
     pointBoundWidth: 50,
     minRadius: 5,
-    maxRadius: 13
+    maxRadius: 13,
+    excludedCountries: [
+      'Russia',
+      'Kazakhstan',
+      'India',
+      'Kyrgyzstan',
+      'China',
+      'Sri Lanka'
+    ]
   }, params);
 
   // viz selection
@@ -127,7 +135,10 @@ function WorldMap(params) {
     viz.features = d3.selectAll('.feature')
       .attr('data-name', d => d.properties.name)
       .on('click', function (d) {
-        clicked(d, this)
+        var name = d.properties.name;
+        if (attrs.excludedCountries.indexOf(name) == -1) {
+          clicked(d, this)
+        }
       })
       .on("mousemove", function (d) {
         showTooltip(d);
@@ -187,7 +198,7 @@ function WorldMap(params) {
 
       var feature = viz.features.filter(x => x.properties.name == name);
 
-      if (!feature.empty()) {
+      if (!feature.empty() && attrs.excludedCountries.indexOf(name) == -1) {
         clicked(feature.datum(), feature.node());
       } else {
         pointClick(Object.assign(d, {properties: {name}}), this);

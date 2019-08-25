@@ -1,5 +1,14 @@
 [
   {
+    "region": "Russia",
+    "latitude": 60.445165,
+    "longitude": 57.439470, 
+    "weight": 11,
+    "animate": true,
+    "label": "custom text",
+    "color": "#5E738B"
+  },
+  {
     "region": "New York",
     "latitude": 40.6643,
     "longitude": -73.9385,
