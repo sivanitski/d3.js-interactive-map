@@ -218,7 +218,7 @@ function WorldMap(params) {
     panTo(0, 0, 1);
   }
 
-  function clicked(d, that) {
+  function clicked(d, that, tooltip = true) {
     if (active.node() === that) {
       onClick(d, false);
       return reset();
@@ -240,7 +240,8 @@ function WorldMap(params) {
 
     panTo(translate[0], translate[1], scale);
 
-    showTooltip(d);
+    if (tooltip) 
+      showTooltip(d);
   }
 
   function pointClick(d, that) {
@@ -273,10 +274,12 @@ function WorldMap(params) {
     showTooltip(d);
   }
 
-  function showTooltip(d) {
+  function showTooltip(d, mouse) {
     var label = d.properties.name;
 
-    var mouse = d3.mouse(viz.svg.node());
+    if (!mouse) {
+      mouse = d3.mouse(viz.svg.node());
+    }
 
     viz.tooltip
       .classed("hidden", false)
@@ -313,21 +316,38 @@ function WorldMap(params) {
     }
   }
 
-  // programatically show tooltip
-  main.showTooltip = function (regionName) {
-    showTooltip({properties: {name: regionName}});
+  function findRegion (regionName) {
+    return viz.features.filter(x => x.properties.name == regionName); 
   }
 
+  // programatically show tooltip
+  main.showTooltip = function (regionName) {
+    var region = findRegion(regionName);
+
+    if (!region.empty()) {
+      showTooltip({properties: {name: regionName}}, path.centroid(region.datum()));
+    }
+    
+    return main;
+  }
+
+  main.reset = reset;
+
   // pan and zoom in to specific point (x, y, scale)
-  main.panTo = panTo;
+  main.panTo = function (x, y, scale) {
+    panTo(x, y, scale);
+    return main;
+  };
 
   // programatically activate region and zoom in
   main.activateRegion = function (regionName) {
-    var feature = viz.features.filter(x => x.properties.name == regionName);
+    var feature = findRegion(regionName);
 
     if (!feature.empty()) {
-      clicked(feature.datum(), feature.node());
+      clicked(feature.datum(), feature.node(), false);
     }
+
+    return main;
   }
 
   main.data = function (data) {

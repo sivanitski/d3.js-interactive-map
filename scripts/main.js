@@ -36,11 +36,12 @@ function main () {
     d3.json('./data/points.json')
   ])
   .then(resp => {
-    console.log(resp[0])
     map.geojson(resp[0])
       .data(resp[1])
       .render()
   })
+
+  window.worldMap = map;
 }
 
 main();
