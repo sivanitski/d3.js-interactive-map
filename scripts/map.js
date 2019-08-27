@@ -215,7 +215,7 @@ function WorldMap(params) {
       } 
       // if not found, calculate point bounds and zoom to the point and also show the circle tooltip
       else {
-        pointClick(Object.assign(d, {properties: {name}}), this);
+        pointClick(Object.assign(d, {properties: {name: d.label}}), this);
       }
 
       blockMouseout = true;
