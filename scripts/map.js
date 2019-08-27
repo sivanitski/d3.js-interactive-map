@@ -206,9 +206,11 @@ function WorldMap(params) {
     })
     .on('mousemove', function (d) {
       showTooltip({properties: {name: d.label}});
+      onMouseMove(Object.assign({properties: {name: d.label}}));
     })
-    .on('mouseout', function () {
+    .on('mouseout', function (d) {
       viz.tooltip.classed("hidden", true);
+      onMouseOut(Object.assign({properties: {name: d.label}}));
     })
   }
 

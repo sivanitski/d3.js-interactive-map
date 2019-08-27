@@ -24,11 +24,11 @@ function main () {
   })
   .onMouseMove(function (d) {
     var {name} = d.properties;
-    // console.log(name);
+    console.log(name);
   })
   .onMouseOut(function (d) {
     var {name} = d.properties;
-    // console.log(name);
+    console.log(name);
   })
 
   Promise.all([
