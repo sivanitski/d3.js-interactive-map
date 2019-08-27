@@ -49,7 +49,8 @@ function WorldMap(params) {
     offsetT = viz.container.node().offsetTop + 10,
     onMouseMove = function () {},
     onMouseOut = function () {},
-    onClick = function () {};
+    onClick = function () {},
+    blockMouseout = false;
 
   function main() {
     // calculated variables
@@ -145,6 +146,10 @@ function WorldMap(params) {
         onMouseMove(d);
       })
       .on("mouseout", function (d, i) {
+        if (blockMouseout) {
+          return;
+        }
+
         viz.tooltip.classed("hidden", true);
         onMouseOut(d);
       })
@@ -194,21 +199,40 @@ function WorldMap(params) {
     .attr("fill", d => d.color)
     .attr("cursor", "pointer")
     .on('click', function (d) {
+      // region name
       var name = d.region;
 
+      // find a feature for that reion
       var feature = viz.features.filter(x => x.properties.name == name);
 
+      // if found
       if (!feature.empty() && attrs.excludedCountries.indexOf(name) == -1) {
-        clicked(feature.datum(), feature.node());
-      } else {
+        // show tooltip for the point
+        showTooltip({properties: {name: d.label}});
+
+        // click handler for the region (feature) without tooltip. 
+        clicked(feature.datum(), feature.node(), false);
+      } 
+      // if not found, calculate point bounds and zoom to the point and also show the circle tooltip
+      else {
         pointClick(Object.assign(d, {properties: {name}}), this);
       }
+
+      blockMouseout = true;
+
+      setTimeout(() => {
+        blockMouseout = false;
+      }, attrs.transitionDuration * 1.5)
     })
     .on('mousemove', function (d) {
       showTooltip({properties: {name: d.label}});
       onMouseMove(Object.assign({properties: {name: d.label}}));
     })
     .on('mouseout', function (d) {
+      if (blockMouseout) {
+        return;
+      }
+      
       viz.tooltip.classed("hidden", true);
       onMouseOut(Object.assign({properties: {name: d.label}}));
     })
@@ -253,8 +277,9 @@ function WorldMap(params) {
 
     panTo(translate[0], translate[1], scale);
 
-    if (tooltip) 
+    if (tooltip) {
       showTooltip(d);
+    }
   }
 
   function pointClick(d, that) {
